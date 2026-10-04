@@ -1,0 +1,18 @@
+# 新增动态只需增加一条；日期使用 YYYY-MM 或 YYYY-MM-DD。
+# group 保留原网站的 Current/Past 分组，不自动猜测新的个人经历。
+- date: '2025-09'
+  text: Began my M.Sc. studies at UESTC, focusing on numerical analysis and scientific computing.
+  category: Academic
+  group: current
+- date: '2025-06'
+  text: Completed my B.Sc. studies at Yangzhou University.
+  category: Milestone
+  group: current
+- date: '2024-08'
+  text: Added and reorganized a collection of mathematics notes.
+  category: Writing
+  group: past
+- date: '2024-05'
+  text: Received Finalist recognition in the Mathematical Contest in Modeling.
+  category: Award
+  group: past

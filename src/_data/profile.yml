@@ -1,0 +1,32 @@
+# 个人资料在这里统一维护；头像和 PDF 路径从网站根目录开始。
+name: Ziyi Wang
+chineseName: 王子毅
+role: Master’s student in Mathematical Sciences
+institution: University of Electronic Science and Technology of China
+portrait: /assets/ziyi-wang.jpg
+portraitAlt: Portrait of Ziyi Wang
+intro: >-
+  I am a master’s student in Mathematical Sciences at the University of
+  Electronic Science and Technology of China.
+summary: >-
+  My interests sit at the intersection of numerical analysis, partial differential
+  equations, and scientific computing. I am especially curious about discontinuous
+  Galerkin methods, finite element analysis, and computational fluid dynamics.
+interests:
+  - Numerical PDEs
+  - DG methods
+  - Scientific computing
+cv: /assets/cv/ziyi-wang-cv.pdf
+email: zyewang33@gmail.com
+scholar: https://scholar.google.com/citations?user=8igSoWgAAAAJ
+github: https://github.com/ziyiwang03
+links:
+  - label: Curriculum Vitae
+    key: cv
+    kind: download
+  - label: Email
+    key: email
+  - label: Google Scholar
+    key: scholar
+  - label: GitHub
+    key: github

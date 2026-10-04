@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="{{ site.language }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <title>{{ pageTitle }}</title>
+    <meta name="description" content="{{ description or site.description }}">
+    <meta name="author" content="{{ profile.name }}">
+    {% if noindex %}
+<meta name="robots" content="noindex">
+{% endif %}
+    <link rel="canonical" href="{{ canonical }}">
+    <meta property="og:title" content="{{ pageTitle }}">
+    <meta property="og:description" content="{{ description or site.description }}">
+    <meta property="og:type" content="{% if tags and ('posts' in tags or 'filmReviews' in tags or 'travelEntries' in tags) %}article{% else %}website{% endif %}">
+    <meta property="og:url" content="{{ canonical }}">
+    <meta property="og:image" content="{{ site.image | absoluteUrl(site.url) }}">
+    <meta property="og:image:alt" content="Portrait of {{ profile.name }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="alternate" type="application/atom+xml" title="{{ profile.name }} — Writing" href="/feed.xml">
+    <script src="/assets/js/theme-init.js">
+</script>
+    {% for sheet in ['tokens','base','layout','components','pages'] %}
+<link rel="stylesheet" href="/assets/css/{{ sheet }}.css">
+{% endfor %}
+    <script defer src="/assets/js/app.js">
+</script>
+    {% if math or (page.url == '/blog/' and collections.featuredMath.length) %}
+<script src="/assets/js/mathjax-config.js">
+</script>
+<script defer src="/assets/mathjax-tex-svg.js">
+</script>
+{% endif %}
+    <script type="application/ld+json">{{ schema | jsonLd | safe }}</script>
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    {% include 'components/header.njk' %}
+    <main id="content" tabindex="-1"{% if navKey == 'life' %} class="life-main"{% endif %}>
+      <div class="page {{ pageClass }}">{{ content | safe }}</div>
+    </main>
+    {% include 'components/footer.njk' %}
+  </body>
+</html>

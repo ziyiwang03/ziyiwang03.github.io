@@ -1,0 +1,46 @@
+running:
+  description: I started running in October 2025 and now average about 100 km each month.
+  started: '2025-10'
+  monthlyDistance: about 100 km
+  photos: []
+  personalBests:
+    - distance: 1 km
+      time: '04:21'
+    - distance: 5 km
+      time: '24:50'
+    - distance: 10 km
+      time: '54:01'
+    - distance: Half marathon
+      time: '02:01:12'
+    - distance: Marathon
+      time: ''
+      note: Open target
+tableTennis:
+  title: Table Tennis
+  description: Main and backup racket configurations. Blade and rubber choices can be added later.
+  # 空值表示尚未记录型号；模板保留主拍/备用拍的字段框架。
+  photos: []
+  # 添加真实 photos 后，会自动取代下方的照片预留框。
+  photoSlots:
+    - label: Playing photo
+    - label: Equipment detail
+  rackets:
+    - name: Main racket
+      blade: ''
+      forehand: ''
+      backhand: ''
+    - name: Backup racket
+      blade: ''
+      forehand: ''
+      backhand: ''
+swimming:
+  description: I swim breaststroke.
+  distance: 1 km
+  personalBest: ≈ 41:00
+  photos: []
+football:
+  description: >-
+    During my master’s studies, I play football with
+    [Prof. Yiqi Gu ↗](http://yiqigu.org.cn/index.html)
+    and his group about two or three times each month.
+  photos: []

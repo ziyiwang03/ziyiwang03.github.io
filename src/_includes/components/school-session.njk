@@ -1,0 +1,44 @@
+<article class="programme-row{% if session.track == 'Foundations' %} programme-row-featured{% endif %}">
+  <div class="programme-date">
+    <time datetime="{{ session.start | isoDate }}">
+      {{ session.start | displayDate('day') }}{% if session.end %}–{{ session.end | displayDate('day') }}{% endif %}
+    </time>
+    {% for time in session.times %}<span>{{ time }}</span>{% endfor %}
+  </div>
+  <span class="programme-track">{{ session.track }}</span>
+  <div class="programme-body">
+    <h3>{{ session.title }}</h3>
+    {% if session.speaker %}
+      <p class="programme-speaker">
+        {% if session.speaker.url %}
+          <a href="{{ session.speaker.url }}" target="_blank" rel="noopener noreferrer">{{ session.speaker.name }} ↗</a>
+        {% else %}
+          <strong>{{ session.speaker.name }}</strong>
+        {% endif %}
+        {% if session.speaker.institution %}<span>{{ session.speaker.institution }}</span>{% endif %}
+      </p>
+    {% endif %}
+    {% if session.place %}<p class="programme-place">{{ session.place }}</p>{% endif %}
+    {% if session.summaries.length %}
+      {% set completed = session.summaries | withText %}
+      <details class="foundation-notes">
+        <summary>
+          Daily summaries
+          <span class="summary-progress">{{ completed.length }}/{{ session.summaries.length }} summaries added</span>
+        </summary>
+        <div class="foundation-day-list">
+          {% for summary in session.summaries %}
+            <div>
+              <time datetime="{{ summary.date | isoDate }}">{{ summary.date | displayDate('day') }}</time>
+              {% if summary.text and summary.text | trim %}
+                <div class="prose">{{ summary.text | markdown | safe }}</div>
+              {% else %}
+                <p class="empty-state">Summary not added yet.</p>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </details>
+    {% endif %}
+  </div>
+</article>

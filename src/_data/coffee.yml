@@ -1,0 +1,8 @@
+- src: /assets/coffee/pour-over.webp
+  alt: Hand-brewed pour-over coffee beside books
+  caption: Pour-over
+  style: pour
+- src: /assets/coffee/latte-retouched.webp
+  alt: A handmade latte with leaf-shaped latte art
+  caption: Latte art
+  style: latte

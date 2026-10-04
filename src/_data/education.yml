@@ -1,0 +1,12 @@
+# end: present 表示仍在读。
+- start: '2025-09'
+  end: present
+  title: M.Sc. in Mathematics
+  institution: University of Electronic Science and Technology of China
+  advisor:
+    name: Prof. Hua Shen
+    url: https://www.math.uestc.edu.cn/info/1183/5829.htm
+- start: '2021-09'
+  end: '2025-06'
+  title: B.Sc. in Mathematics
+  institution: Yangzhou University

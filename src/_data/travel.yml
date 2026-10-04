@@ -1,0 +1,4 @@
+# Only add places actually visited. Coordinates must be numbers, not strings.
+# key: a unique lowercase slug; name/country/latitude/longitude/description.
+# Entries are Markdown files tagged travelEntries; placeKey connects to this key.
+places: []

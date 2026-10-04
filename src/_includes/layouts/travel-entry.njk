@@ -1,0 +1,12 @@
+---
+layout: layouts/base.njk
+---
+{% include 'components/life-nav.njk' %}
+{% set place = travel.places | findBy('key',placeKey) %}
+<header class="page-intro travel-entry-header">
+  <p class="blog-meta">{{ kind | replace('-',' ') | capitalize }} · <time datetime="{{ date | isoDate }}">{{ date | displayDate('day') }}</time></p>
+  <h1>{{ title }}</h1>
+  {% if description %}<p>{{ description }}</p>{% endif %}
+  {% if place %}<a href="/life/travel/#place-{{ place.key }}">{{ place.name }} · Place notes →</a>{% endif %}
+</header>
+<article class="prose">{{ content | safe }}</article>

@@ -1,0 +1,26 @@
+# shape 控制版式；相同 group 的两张图片并排展示。
+- src: /assets/photography/blue-hour.webp
+  alt: Layers of mountains and a lake beneath a blue-hour sky
+  shape: wide
+- src: /assets/photography/tabby-portrait.webp
+  alt: A tabby cat sitting beside a doorway
+  shape: portrait
+  group: portrait-pair
+- src: /assets/photography/coffee-table.webp
+  alt: Two cups of latte art on a wooden table
+  shape: portrait
+  group: portrait-pair
+- src: /assets/photography/misty-city.webp
+  alt: A misty city framed by distant karst hills
+  shape: wide
+- src: /assets/photography/night-bridge.webp
+  alt: An illuminated red bridge and city lights above a river at night
+  shape: wide
+- src: /assets/photography/sleeping-cat.webp
+  alt: A white and orange cat resting in sunlight
+  shape: landscape
+  group: landscape-pair
+- src: /assets/photography/waterside.webp
+  alt: A black-and-white waterside scene framed by bare branches
+  shape: landscape
+  group: landscape-pair

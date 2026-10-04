@@ -1,0 +1,8 @@
+# 尚未开始的经历必须标为 upcoming；开始后可改为 current。
+- start: '2027-01'
+  end: '2027-12'
+  title: Visiting Student
+  institution: Inria Paris
+  location: Paris, France
+  host: Zhaonan Dong
+  status: upcoming

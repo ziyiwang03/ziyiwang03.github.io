@@ -1,0 +1,13 @@
+---
+layout: layouts/base.njk
+---
+<a class="back-link" href="/blog/">← Back to Writing</a>
+<header class="page-intro">
+<p class="blog-meta">
+<time datetime="{{ date | isoDate }}">{{ date | displayDate('day') }}</time> · {{ category | capitalize }}</p>
+<h1>{{ title }}</h1>
+{% if description %}
+<p>{{ description }}</p>
+{% endif %}
+</header>
+<article class="prose">{{ content | safe }}</article>

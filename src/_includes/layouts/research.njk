@@ -1,0 +1,17 @@
+---
+layout: layouts/base.njk
+---
+<header class="page-intro">
+<h1>{{ title }}</h1>
+</header>
+<div class="prose">{{ content | safe }}</div>
+<div class="research-grid">
+{% for item in research %}
+<article class="research-card">
+<span class="research-number">{{ loop.index | twoDigits }}</span>
+<h2>{{ item.title }}</h2>
+<p>{{ item.description }}</p>
+<div class="research-meta">{{ item.topics | join(' · ') }}</div>
+</article>
+{% endfor %}
+</div>

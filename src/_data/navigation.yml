@@ -1,0 +1,22 @@
+# 顺序即为主导航顺序。
+- key: home
+  label: Home
+  url: /
+- key: publications
+  label: Publications
+  url: /publications/
+- key: research
+  label: Research
+  url: /research/
+- key: teaching
+  label: Teaching
+  url: /teaching/
+- key: studies
+  label: Studies
+  url: /studies/
+- key: blog
+  label: Blog
+  url: /blog/
+- key: life
+  label: Life
+  url: /life/

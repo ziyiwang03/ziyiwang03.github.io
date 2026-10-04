@@ -1,0 +1,69 @@
+---
+layout: layouts/base.njk
+---
+{% include 'components/life-nav.njk' %}
+{% set places = travel.places | mapPoints %}
+<section class="life-section">
+<header class="life-section-heading">
+  <h1>{{ title }}</h1>
+  <div class="prose">{{ content | safe }}</div>
+</header>
+<section class="travel-map" aria-labelledby="travel-map-title">
+  <h2 id="travel-map-title">Visited places</h2>
+  {% if places.length %}
+  <p id="travel-map-description">Longitude–latitude overview. Select a marker to read its notes below.</p>
+  <svg viewBox="0 0 720 360" role="group" aria-labelledby="travel-map-title travel-map-description">
+    <g class="map-grid" aria-hidden="true">
+      <rect x="20" y="20" width="680" height="320" fill="none"/>
+      <path d="M20 100H700 M20 180H700 M20 260H700 M190 20V340 M360 20V340 M530 20V340" fill="none"/>
+      <text x="360" y="355" text-anchor="middle">0° longitude</text>
+      <text x="24" y="176">Equator</text>
+    </g>
+    {% for place in places %}
+    <a class="place-pin" href="#place-{{ place.key }}" aria-label="Read notes for {{ place.name }}">
+      <circle cx="{{ place.x }}" cy="{{ place.y }}" r="7"/>
+      <text x="{{ place.x }}" y="{{ place.y - 13 }}" text-anchor="middle">{{ loop.index }}</text>
+    </a>
+    {% endfor %}
+  </svg>
+  <div class="place-list">
+    {% for place in places %}
+    <article id="place-{{ place.key }}" class="place-card" tabindex="-1">
+      <h3><span>{{ loop.index | twoDigits }}</span> {{ place.name }}</h3>
+      {% if place.country %}<p>{{ place.country }}</p>{% endif %}
+      {% if place.description %}<div class="prose">{{ place.description | markdown | safe }}</div>{% endif %}
+      {% for entry in collections.travelEntries | entriesFor('placeKey',place.key) %}
+      <a href="{{ entry.url }}">{{ entry.data.title }} →</a>
+      {% endfor %}
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="empty-state">No visited-place records have been added yet. Only confirmed places will appear here.</p>
+  {% endif %}
+</section>
+<section class="travel-writing" data-filter-group data-filter-key="travel" data-default-filter="all" aria-labelledby="travel-writing-title">
+  <header class="travel-writing-heading">
+    <h2 id="travel-writing-title">Travel writing</h2>
+    <p>Guides · Journals · Photo essays</p>
+  </header>
+  <div class="filter-controls" data-filter-controls role="group" aria-label="Filter travel writing">
+    {% for key,label in {all:'All',guide:'Guides',journal:'Journals','photo-essay':'Photo essays'} %}
+    <button type="button" data-filter="{{ key }}" aria-pressed="{{ 'true' if key == 'all' else 'false' }}">{{ label }}</button>
+    {% endfor %}
+  </div>
+  <div aria-live="polite">
+    {% for entry in collections.travelEntries %}
+    <article data-filter-item data-category="{{ entry.data.kind }}">
+      <span>{{ entry.data.kind | replace('-',' ') | capitalize }}</span>
+      <div>
+        <h3><a href="{{ entry.url }}">{{ entry.data.title }}</a></h3>
+        <p>{{ entry.data.description }}</p>
+        <time datetime="{{ entry.data.date | isoDate }}">{{ entry.data.date | displayDate('day') }}</time>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  <p class="empty-state" data-filter-empty{% if collections.travelEntries.length %} hidden{% endif %}>No travel entries in this collection yet.</p>
+</section>
+</section>

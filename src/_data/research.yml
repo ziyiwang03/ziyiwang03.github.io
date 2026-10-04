@@ -1,0 +1,22 @@
+- title: Discontinuous Galerkin methods
+  description: >-
+    High-order, locally conservative discretizations for transport, diffusion,
+    and wave problems on complex meshes.
+  topics:
+    - Stability
+    - Adaptivity
+    - Error analysis
+- title: Finite element analysis
+  description: >-
+    Approximation theory and practical methods that connect rigorous estimates
+    with reliable scientific computation.
+  topics:
+    - Galerkin methods
+    - A posteriori estimates
+- title: Computational fluid dynamics
+  description: >-
+    Structure-aware simulation of multiscale flow phenomena and their coupled
+    partial differential equations.
+  topics:
+    - Conservation laws
+    - Multiphysics

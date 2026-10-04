@@ -1,0 +1,54 @@
+# category: graduate / undergraduate / frontiers。
+# title, pages, size 迁移自原站；替换 PDF 时请同步更新这些元数据。
+- title: Introduction to the Finite Element Method
+  category: graduate
+  pages: 53
+  size: 6.2 MB
+  url: /assets/notes/finite-element-method.pdf
+- title: Mathematical Foundations of the Navier–Stokes Equations
+  category: graduate
+  pages: 12
+  size: 258 KB
+  url: /assets/notes/navier-stokes-foundations.pdf
+- title: Probability Theory
+  category: undergraduate
+  pages: 30
+  size: 874 KB
+  url: /assets/notes/probability-theory.pdf
+- title: Real Analysis
+  category: undergraduate
+  pages: 50
+  size: 2.1 MB
+  url: /assets/notes/real-analysis.pdf
+- title: Complex Analysis
+  category: undergraduate
+  pages: 49
+  size: 2.0 MB
+  url: /assets/notes/complex-analysis.pdf
+- title: Numerical Analysis
+  category: undergraduate
+  pages: 48
+  size: 706 KB
+  url: /assets/notes/numerical-analysis.pdf
+- title: Linear Algebra
+  category: undergraduate
+  pages: 70
+  size: 4.2 MB
+  url: /assets/notes/linear-algebra.pdf
+- title: Ordinary Differential Equations
+  category: undergraduate
+  pages: 33
+  size: 577 KB
+  url: /assets/notes/ordinary-differential-equations.pdf
+- title: Mathematical Analysis
+  category: undergraduate
+  pages: 128
+  size: 4.5 MB
+  url: /assets/notes/mathematical-analysis.pdf
+- title: Real Analysis Homework
+  category: undergraduate
+  kind: Exercises
+  pages: 23
+  size: 179 KB
+  url: /assets/notes/real-analysis-homework.pdf
+  note: Partial notes

@@ -1,0 +1,101 @@
+---
+layout: layouts/base.njk
+---
+{% macro seminarGroup(kind, label, description, showEmpty = false) %}
+  {% set count = 0 %}
+  {% for seminar in collections.seminars %}
+    {% if seminar.data.kind == kind or (kind == 'other' and seminar.data.kind not in ['organized', 'attended']) %}
+      {% set count = count + 1 %}
+    {% endif %}
+  {% endfor %}
+  {% if count or showEmpty %}
+    <section class="seminar-group" aria-labelledby="seminar-{{ kind }}-title">
+      <header class="seminar-heading">
+        <h3 id="seminar-{{ kind }}-title">{{ label }}</h3>
+        <p>{{ description }}</p>
+      </header>
+      {% if count %}
+        <div class="studies-list">
+          {% for seminar in collections.seminars %}
+            {% if seminar.data.kind == kind or (kind == 'other' and seminar.data.kind not in ['organized', 'attended']) %}
+              <a class="study-row study-row-link" href="{{ seminar.url }}">
+                <span class="study-kind">{{ label }}</span>
+                <div>
+                  <h4>{{ seminar.data.title }}</h4>
+                  {% if seminar.data.description %}<p>{{ seminar.data.description }}</p>{% endif %}
+                </div>
+                <span class="study-status">Open page →</span>
+              </a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="empty-state">No {{ kind }} seminars are listed yet.</p>
+      {% endif %}
+    </section>
+  {% endif %}
+{% endmacro %}
+
+<header class="page-intro studies-intro">
+  <h1>{{ title }}</h1>
+  <div class="prose">{{ content | safe }}</div>
+</header>
+
+<div class="studies-collections">
+  <section class="studies-collection" aria-labelledby="course-notes-title" data-filter-group data-filter-key="notes" data-default-filter="graduate">
+    <header class="studies-collection-heading">
+      <h2 id="course-notes-title">Course notes</h2>
+      <p>Downloadable PDF notes, organized by course and topic.</p>
+    </header>
+    <div class="notes-filters filter-controls" data-filter-controls role="group" aria-label="Filter course notes">
+      {% for key, label in {all:'All', frontiers:'Frontier Research', graduate:'Graduate Courses', undergraduate:'Undergraduate Courses'} %}
+        <button type="button" data-filter="{{ key }}" aria-pressed="{{ 'true' if key == 'graduate' else 'false' }}">{{ label }}</button>
+      {% endfor %}
+    </div>
+    <div class="course-notes-list" aria-live="polite">
+      {% for item in notes %}
+        <a class="course-note-row" data-filter-item data-category="{{ item.category }}" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">
+          <div>
+            <h3>{{ item.title }}</h3>
+            <p>
+              {% if item.kind %}{{ item.kind }}{% elif item.category == 'graduate' %}Graduate course{% elif item.category == 'undergraduate' %}Undergraduate course{% else %}Research notes{% endif %} · {{ item.pages }} pages{% if item.note %} · {{ item.note }}{% endif %}
+            </p>
+          </div>
+          <span>PDF · {{ item.url | fileSize }} ↗</span>
+        </a>
+      {% endfor %}
+    </div>
+    <p class="empty-state" data-filter-empty hidden>No notes have been added to this collection yet.</p>
+  </section>
+
+  <section class="studies-collection" aria-labelledby="seminars-title">
+    <header class="studies-collection-heading">
+      <h2 id="seminars-title">Seminars</h2>
+      <p>Reading plans, schedules, references, and selected notes from seminars I organize or attend.</p>
+    </header>
+    <div class="seminar-groups">
+      {{ seminarGroup('organized', 'Organized', 'Themes, weekly speakers, reading lists, and shared materials.', true) }}
+      {{ seminarGroup('attended', 'Attended', 'Selected talks, personal notes, references, and questions to revisit.', true) }}
+      {{ seminarGroup('other', 'Other seminars', 'Seminar records without an organized or attended category.') }}
+    </div>
+  </section>
+
+  <section class="studies-collection" aria-labelledby="schools-title">
+    <header class="studies-collection-heading">
+      <h2 id="schools-title">Schools &amp; workshops</h2>
+      <p>Programmes and notes from mathematics workshops.</p>
+    </header>
+    <div class="studies-list">
+      {% for school in schools | newest('start') %}
+        <a class="study-row study-row-link" href="{{ school.url }}">
+          <span class="study-kind">{{ school.kind or 'Summer school' }}</span>
+          <div>
+            <h3>{{ school.title }}</h3>
+            <p>{{ school.location }} · {{ school.start | displayDate('day') }}–{{ school.end | displayDate('day') }}</p>
+          </div>
+          <span class="study-status">Open page →</span>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+</div>

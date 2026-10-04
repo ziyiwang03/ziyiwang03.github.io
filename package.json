@@ -1,0 +1,25 @@
+{
+  "name": "ziyi-wang-homepage",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.19.0",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "check": "node scripts/check.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "verify": "node --test tests/*.test.mjs && eleventy && node scripts/check.mjs",
+    "preview": "node scripts/serve.mjs",
+    "test:browser": "node scripts/browser-check.mjs"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.6",
+    "image-size": "2.0.2",
+    "markdown-it": "14.1.0",
+    "markdown-it-anchor": "9.2.0",
+    "parse5": "7.3.0",
+    "yaml": "2.8.1"
+  }
+}

@@ -1,0 +1,77 @@
+---
+layout: layouts/base.njk
+---
+{% set school = schools | findBy('key',schoolKey) %}
+<a class="back-link" href="/studies/">← Back to Studies</a>
+<header class="school-hero">
+  <div class="school-hero-copy">
+    <h1>{{ school.title }}</h1>
+    {% if school.chineseTitle %}<p class="school-title-cn" lang="zh-CN">{{ school.chineseTitle }}</p>{% endif %}
+  </div>
+  <dl class="school-facts">
+    <div><dt>Dates</dt><dd>{{ school.start | displayDate('day') }}–{{ school.end | displayDate('day') }}</dd></div>
+    <div><dt>Location</dt><dd>{{ school.location }}</dd></div>
+    <div><dt>Host</dt><dd>{{ school.host }}</dd></div>
+  </dl>
+  {% if school.photo %}
+    <figure class="school-group-photo">
+      {% image school.photo, school.photoAlt, false %}
+      {% if school.photoCaption %}<figcaption>{{ school.photoCaption }}</figcaption>{% endif %}
+    </figure>
+  {% endif %}
+</header>
+
+<div class="school-content">
+  <div class="prose school-lead">{{ content | safe }}</div>
+  <section class="school-programme" aria-labelledby="programme-title">
+    <header class="school-section-heading">
+      <h2 id="programme-title">Programme</h2>
+      {% if school.defaultTimes.length %}<p>Lecture times: {{ school.defaultTimes | join(' and ') }}, unless noted otherwise.</p>{% endif %}
+    </header>
+    {% if school.sections.length %}
+      {% for section in school.sections %}
+        <section class="programme-track-block programme-{{ section.key }}" aria-labelledby="{{ section.headingId or 'programme-' + section.key + '-title' }}">
+          <header class="programme-track-heading">
+            <h3 id="{{ section.headingId or 'programme-' + section.key + '-title' }}">{{ section.title }}</h3>
+            {% if section.description %}<p>{{ section.description }}</p>{% endif %}
+          </header>
+          <div class="programme-list">
+            {% for session in school.sessions %}
+              {% if session.track in section.tracks %}
+                {% include 'components/school-session.njk' %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </section>
+      {% endfor %}
+      {# New session tracks stay visible even before their section is configured. #}
+      {% set ungrouped = [] %}
+      {% for session in school.sessions %}
+        {% set grouped = false %}
+        {% for section in school.sections %}
+          {% if session.track in section.tracks %}{% set grouped = true %}{% endif %}
+        {% endfor %}
+        {% if not grouped %}{% set unused = ungrouped.push(session) %}{% endif %}
+      {% endfor %}
+      {% if ungrouped.length %}
+        <section class="programme-track-block" aria-labelledby="programme-other-title">
+          <header class="programme-track-heading"><h3 id="programme-other-title">Other sessions</h3></header>
+          <div class="programme-list">
+            {% for session in ungrouped %}
+              {% include 'components/school-session.njk' %}
+            {% endfor %}
+          </div>
+        </section>
+      {% endif %}
+    {% else %}
+      <div class="programme-list">
+        {% for session in school.sessions %}
+          {% include 'components/school-session.njk' %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </section>
+  {% if school.noticeUrl %}
+    <a class="school-notice-link" href="{{ school.noticeUrl }}" target="_blank" rel="noopener noreferrer">Official programme notice ↗</a>
+  {% endif %}
+</div>

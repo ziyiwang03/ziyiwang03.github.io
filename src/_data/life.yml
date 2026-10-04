@@ -1,0 +1,20 @@
+- key: sports
+  label: Sports
+  url: /life/sports/
+  description: Running, table tennis, swimming, and football
+- key: movies
+  label: Movies
+  url: /life/movies/
+  description: Ten favourites
+- key: coffee
+  label: Coffee
+  url: /life/coffee/
+  description: Pour-over coffee and latte art
+- key: photography
+  label: Photography
+  url: /life/photography/
+  description: Selected photographs
+- key: travel
+  label: Travel
+  url: /life/travel/
+  description: Travel journals and field notes

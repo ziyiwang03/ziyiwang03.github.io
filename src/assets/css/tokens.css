@@ -1,0 +1,66 @@
+/* Theme and sizing values used throughout the site. */
+@layer tokens, base, layout, components, pages;
+
+@layer tokens {
+  :root {
+    color-scheme: light;
+    --bg: #f1efe8;
+    --surface: #faf8f2;
+    --surface-strong: #ffffff;
+    --ink: #17211e;
+    --muted: #626d67;
+    --faint: #727d76;
+    --line: #d8d5cc;
+    --line-strong: #b8b9b2;
+    --accent: #146c62;
+    --accent-soft: #dceae6;
+    --warm: #b85337;
+    --shadow: 0 12px 32px rgb(17 24 20 / 9%);
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
+    --display-serif: Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+    --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --kai: "Kaiti SC", STKaiti, KaiTi, "楷体", serif;
+    --outer-width: 980px;
+    --reading-width: 820px;
+    --gutter: 24px;
+  }
+
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #101512;
+    --surface: #161d19;
+    --surface-strong: #1c2520;
+    --ink: #ece9df;
+    --muted: #a4ada8;
+    --faint: #97a29c;
+    --line: #2e3934;
+    --line-strong: #445149;
+    --accent: #83c8b9;
+    --accent-soft: #1b3731;
+    --warm: #dc846a;
+    --shadow: 0 12px 32px rgb(0 0 0 / 25%);
+  }
+
+  /* A useful theme also applies when JavaScript is unavailable. */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+      color-scheme: dark;
+      --bg: #101512;
+      --surface: #161d19;
+      --surface-strong: #1c2520;
+      --ink: #ece9df;
+      --muted: #a4ada8;
+      --faint: #97a29c;
+      --line: #2e3934;
+      --line-strong: #445149;
+      --accent: #83c8b9;
+      --accent-soft: #1b3731;
+      --warm: #dc846a;
+      --shadow: 0 12px 32px rgb(0 0 0 / 25%);
+    }
+  }
+
+  @media (max-width: 600px) {
+    :root { --gutter: 22px; }
+  }
+}

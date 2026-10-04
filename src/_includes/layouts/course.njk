@@ -1,0 +1,114 @@
+---
+layout: layouts/base.njk
+---
+<a class="back-link" href="/teaching/">← Back to Teaching</a>
+
+{% if isTemplate %}
+  <aside class="template-notice" aria-label="About this course template">
+    <strong>Course room template</strong>
+    <p>Not a teaching appointment. This page demonstrates a course-room layout with a sample syllabus; the term and teaching role have not been confirmed.</p>
+  </aside>
+{% endif %}
+
+<header class="standalone-hero">
+  <div>
+    <h1>{{ title }}</h1>
+    {% if description %}<p>{{ description }}</p>{% endif %}
+    {% if status %}<p class="course-status">{{ status }}</p>{% endif %}
+  </div>
+  <div class="course-facts">
+    <dl>
+      {% if code %}<div><dt>Course code</dt><dd>{{ code }}</dd></div>{% endif %}
+      {% if term %}<div><dt>Term</dt><dd>{{ term }}</dd></div>{% endif %}
+      {% if role %}<div><dt>Role</dt><dd>{{ role }}</dd></div>{% endif %}
+      {% if format %}<div><dt>Format</dt><dd>{{ format }}</dd></div>{% endif %}
+    </dl>
+  </div>
+</header>
+
+<div class="course-layout">
+  <nav class="course-sidebar" aria-label="Course page sections">
+    <a href="#course-overview">Overview</a>
+    <a href="#course-schedule">Schedule</a>
+    <a href="#course-resources">Resources</a>
+    {% if officeHours %}<a href="#course-office-hours">Office hours</a>{% endif %}
+  </nav>
+
+  <div class="course-content">
+    <section id="course-overview" aria-labelledby="course-overview-title">
+      <span class="content-number" aria-hidden="true">01</span>
+      <h2 id="course-overview-title">Overview</h2>
+      <div class="prose">{{ content | safe }}</div>
+
+      <section class="course-announcements" aria-labelledby="course-announcements-title">
+        <h3 id="course-announcements-title">Announcements</h3>
+        {% if announcements.length %}
+          {% for announcement in announcements | newest('date') %}
+            <article class="announcement">
+              {% if announcement.date %}
+                <time datetime="{{ announcement.date | isoDate }}">{{ announcement.date | displayDate('day') }}</time>
+              {% endif %}
+              {% if announcement.title %}<h4>{{ announcement.title }}</h4>{% endif %}
+              {% if announcement.text %}<div class="prose">{{ announcement.text | markdown | safe }}</div>{% endif %}
+            </article>
+          {% endfor %}
+        {% else %}
+          <p class="announcement empty-state">No announcements yet.</p>
+        {% endif %}
+      </section>
+    </section>
+
+    <section id="course-schedule" aria-labelledby="course-schedule-title">
+      <span class="content-number" aria-hidden="true">02</span>
+      <h2 id="course-schedule-title">Weekly schedule</h2>
+      {% if isTemplate %}<p class="empty-state">Sample syllabus — illustrative topics, not a confirmed teaching schedule.</p>{% endif %}
+      {% if schedule.length %}
+        <ol class="week-list">
+          {% for entry in schedule %}
+            <li>
+              <span class="week-number">Week {{ entry.week }}</span>
+              <strong>{{ entry.topic }}</strong>
+              <div class="week-links">
+                {% for link in entry.links %}
+                  {% if link.url %}<a href="{{ link.url }}" rel="noopener noreferrer">{{ link.label }} ↗</a>{% endif %}
+                {% endfor %}
+                {% if isTemplate and not entry.links.length %}<span class="empty-state">No notes uploaded</span>{% endif %}
+              </div>
+            </li>
+          {% endfor %}
+        </ol>
+      {% else %}
+        <p class="empty-state">No weekly topics are listed yet.</p>
+      {% endif %}
+    </section>
+
+    <section id="course-resources" aria-labelledby="course-resources-title">
+      <span class="content-number" aria-hidden="true">03</span>
+      <h2 id="course-resources-title">Resources</h2>
+      {% if resources.length %}
+        <div class="resource-links">
+          {% for resource in resources %}
+            {% if resource.url %}
+              <a href="{{ resource.url }}" rel="noopener noreferrer">
+                {{ resource.label }} <span>{{ resource.kind or 'Open' }} ↗</span>
+              </a>
+            {% else %}
+              <div class="resource-unavailable">
+                <span>{{ resource.label }}</span><small>Not uploaded</small>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="empty-state">No course resources have been uploaded yet.</p>
+      {% endif %}
+    </section>
+
+    {% if officeHours %}
+      <section id="course-office-hours" aria-labelledby="course-office-hours-title">
+        <h2 id="course-office-hours-title">Office hours</h2>
+        <div class="prose">{{ officeHours | markdown | safe }}</div>
+      </section>
+    {% endif %}
+  </div>
+</div>

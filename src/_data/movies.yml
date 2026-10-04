@@ -1,0 +1,81 @@
+# 排列顺序即为榜单顺序。review 留空时保留原版的待填写提示。
+- key: yi-yi
+  title: Yi Yi
+  chineseTitle: 一一
+  year: 2000
+  director: Edward Yang
+  poster: /assets/posters/yi-yi.jpg
+  alt: Official poster for Yi Yi
+  review: ''
+- key: interstellar
+  title: Interstellar
+  chineseTitle: 星际穿越
+  year: 2014
+  director: Christopher Nolan
+  poster: /assets/posters/interstellar.jpg
+  alt: Official poster for Interstellar
+  review: ''
+- key: the-sun-also-rises
+  title: The Sun Also Rises
+  chineseTitle: 太阳照常升起
+  year: 2007
+  director: Jiang Wen
+  poster: /assets/posters/sun-also-rises.jpg
+  alt: Official poster for The Sun Also Rises
+  review: ''
+- key: blade-runner-2049
+  title: Blade Runner 2049
+  chineseTitle: 银翼杀手2049
+  year: 2017
+  director: Denis Villeneuve
+  poster: /assets/posters/blade-runner-2049.png
+  alt: Official poster for Blade Runner 2049
+  review: ''
+- key: la-la-land
+  title: La La Land
+  chineseTitle: 爱乐之城
+  year: 2016
+  director: Damien Chazelle
+  poster: /assets/posters/la-la-land.png
+  alt: Official poster for La La Land
+  review: ''
+- key: a-beautiful-mind
+  title: A Beautiful Mind
+  chineseTitle: 美丽心灵
+  year: 2001
+  director: Ron Howard
+  poster: /assets/posters/beautiful-mind.jpg
+  alt: Official poster for A Beautiful Mind
+  review: ''
+- key: the-theory-of-everything
+  title: The Theory of Everything
+  chineseTitle: 万物理论
+  year: 2014
+  director: James Marsh
+  poster: /assets/posters/theory-of-everything.jpg
+  alt: Official poster for The Theory of Everything
+  review: ''
+- key: chungking-express
+  title: Chungking Express
+  chineseTitle: 重庆森林
+  year: 1994
+  director: Wong Kar-wai
+  poster: /assets/posters/chungking-express.jpg
+  alt: Official poster for Chungking Express
+  review: ''
+- key: we-made-a-beautiful-bouquet
+  title: We Made a Beautiful Bouquet
+  chineseTitle: 花束般的恋爱
+  year: 2021
+  director: Nobuhiro Doi
+  poster: /assets/posters/bouquet.jpg
+  alt: Official poster for We Made a Beautiful Bouquet
+  review: ''
+- key: inception
+  title: Inception
+  chineseTitle: 盗梦空间
+  year: 2010
+  director: Christopher Nolan
+  poster: /assets/posters/inception.jpg
+  alt: Official poster for Inception
+  review: ''

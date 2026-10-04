@@ -1,0 +1,28 @@
+---
+layout: layouts/base.njk
+---
+{% set movie = movies | findBy('key', movieKey) %}
+<a class="back-link" href="/life/movies/">← Back to Movies</a>
+<header class="page-intro film-review-header{% if not movie %} film-review-header-no-poster{% endif %}">
+  {% if movie %}
+  <div class="movie-poster">
+    <a class="poster-shell" data-image-preview href="{{ movie.poster }}" data-image-src="{{ movie.poster }}" data-image-alt="{{ movie.alt }}" data-image-label="{{ movie.title }}" aria-label="View the original poster for {{ movie.title }}">
+      {% image movie.poster, movie.alt, true, 'poster-image' %}
+    </a>
+  </div>
+  {% endif %}
+  <div>
+    {% if date %}<p class="blog-meta"><time datetime="{{ date | isoDate }}">{{ date | displayDate('day') }}</time></p>{% endif %}
+    <h1>{{ title }}</h1>
+    {% if movie %}<p class="film-details">{{ movie.title }}{% if movie.chineseTitle %} · <span lang="zh-CN">{{ movie.chineseTitle }}</span>{% endif %}<br>{{ movie.year }} · {{ movie.director }}</p>{% endif %}
+    {% if description %}<p>{{ description }}</p>{% endif %}
+  </div>
+</header>
+{% if spoilers %}
+<details class="spoiler-review">
+  <summary>This review contains spoilers. Show the review.</summary>
+  <article class="prose">{{ content | safe }}</article>
+</details>
+{% else %}
+<article class="prose film-review-body">{{ content | safe }}</article>
+{% endif %}

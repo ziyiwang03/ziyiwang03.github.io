@@ -1,0 +1,8 @@
+<div class="life-subpage-header">
+<a class="back-link" href="/life/">← Back to Life</a>
+<nav aria-label="Life categories">
+{% for item in life %}
+<a href="{{ item.url }}"{% if lifeKey == item.key %} class="is-active" aria-current="page"{% endif %}>{{ item.label }}</a>
+{% endfor %}
+</nav>
+</div>

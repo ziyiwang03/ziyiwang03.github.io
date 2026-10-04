@@ -1,0 +1,18 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/" aria-label="{{ profile.name }} — Home">
+<span class="brand-mark">Ziyi<span>.</span>
+</span>
+</a>
+    <button class="menu-toggle" data-menu-toggle type="button" aria-controls="primary-nav" aria-expanded="false">Menu</button>
+    <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
+      {% for item in navigation %}
+<a href="{{ item.url }}"{% if navKey == item.key %} class="is-active" aria-current="page"{% endif %}>{{ item.label }}</a>
+{% endfor %}
+    </nav>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
+<span class="theme-icon" aria-hidden="true">◐</span>
+<span class="theme-label">Theme</span>
+</button>
+  </div>
+</header>

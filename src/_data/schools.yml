@@ -1,0 +1,151 @@
+# 每个讲习班一项，sessions 为完整日程。
+# summaries 保留全部日期；text 留空时明确显示尚未填写。
+- key: afepack-2026
+  title: Adaptive Finite Element Algorithms & AFEPack Applications
+  chineseTitle: 2026年“自适应有限元算法及AFEPack应用”天元数学专题讲习班
+  start: '2026-07-19'
+  end: '2026-08-05'
+  location: Kunming, Yunnan
+  host: Yunnan Normal University
+  url: /schools/afepack-2026/
+  photo: /assets/studies/afepack-summer-school-group.webp
+  photoAlt: Group photograph from the 2026 Tianyuan Mathematics workshop on adaptive finite element algorithms and AFEPack
+  photoCaption: Group photograph · Kunming · July 2026
+  noticeUrl: https://math.ynnu.edu.cn/__local/5/65/14/7F5DEE70B97D8FDE7F0113215AF_2E4CF1A9_2C61C.pdf
+  defaultTimes:
+    - 08:30–11:30
+    - 14:00–17:00
+  sections:
+    - key: admin
+      title: Arrival & opening
+      tracks: [Arrival, Opening]
+    - key: foundations
+      title: Foundations
+      headingId: foundations-title
+      description: Core theory and software foundations, with space for a short summary of every day.
+      tracks: [Foundations]
+    - key: frontiers
+      title: Frontier lectures
+      headingId: frontiers-title
+      description: Research talks connecting AFEPack with current problems in scientific computing.
+      tracks: [Research]
+    - key: departure
+      title: Departure
+      tracks: [Departure]
+  sessions:
+    - start: '2026-07-19'
+      times:
+        - 08:00–20:00
+      track: Arrival
+      title: Registration
+      place: Yunshang Seasons Hotel, Kunming
+    - start: '2026-07-20'
+      times:
+        - 09:00–11:30
+        - 14:00–17:00
+      track: Opening
+      title: Opening ceremony and programme introduction
+      speaker:
+        name: Ruo Li
+        url: https://bda.pku.edu.cn/info/1161/1984.htm
+        institution: Peking University
+      place: Training Building II–204
+    - start: '2026-07-21'
+      end: '2026-07-28'
+      times:
+        - 08:30–11:30
+        - 14:00–17:00
+      track: Foundations
+      title: Theory of adaptive finite element methods and AFEPack foundations
+      speaker:
+        name: Guanghui Hu
+        url: https://www.fst.um.edu.mo/people/garyhu/
+        institution: University of Macau
+      place: Training Building II–204
+      summaries:
+        - date: '2026-07-21'
+          text: ''
+        - date: '2026-07-22'
+          text: ''
+        - date: '2026-07-23'
+          text: ''
+        - date: '2026-07-24'
+          text: ''
+        - date: '2026-07-25'
+          text: ''
+        - date: '2026-07-26'
+          text: ''
+        - date: '2026-07-27'
+          text: ''
+        - date: '2026-07-28'
+          text: ''
+    - start: '2026-07-29'
+      times:
+        - 08:30–11:30
+        - 14:00–17:00
+      track: Research
+      title: Mixed finite element computation with AFEPack and applications
+      speaker:
+        name: Heyu Wang
+        url: https://mypage.zju.edu.cn/wangheyu
+        institution: Zhejiang University
+      place: Training Building II–204
+    - start: '2026-07-30'
+      times:
+        - 08:30–11:30
+        - 14:00–17:00
+      track: Research
+      title: AFEPack for rarefied-gas kinetic theory
+      speaker:
+        name: Yanli Wang
+        url: https://www.csrc.ac.cn/groups/ylwang/ch-index.html
+        institution: Beijing Computational Science Research Center
+      place: Training Building II–204
+    - start: '2026-07-31'
+      times:
+        - 08:30–11:30
+        - 14:00–17:00
+      track: Research
+      title: Moving-mesh methods for PDEs implemented with AFEPack
+      speaker:
+        name: Yana Di
+        url: https://staff.uic.edu.cn/yndi/cn
+        institution: Beijing Normal–Hong Kong Baptist University
+      place: Training Building II–204
+    - start: '2026-08-01'
+      times:
+        - 08:30–11:30
+        - 14:00–17:00
+      track: Research
+      title: Efficient multi-objective computation and reinforcement learning coupling with AFEPack
+      speaker:
+        name: Jingfeng Wang
+        url: https://shankswang953.github.io/cv/
+        institution: University of Macau
+      place: Training Building II–204
+    - start: '2026-08-02'
+      times:
+        - 08:30–11:30
+        - 14:00–17:00
+      track: Research
+      title: Design and implementation of spectral element methods in AFEPack
+      speaker:
+        name: Hongfei Zhan
+        url: https://www.math.nus.edu.sg/people/research-staff/
+        institution: National University of Singapore
+      place: Training Building II–202
+    - start: '2026-08-03'
+      end: '2026-08-04'
+      times:
+        - 08:30–11:30
+        - 14:00–17:00
+      track: Research
+      title: Density functional theory and AFEPack applications
+      speaker:
+        name: Yang Kuang
+        url: https://yk2015.github.io/
+        institution: Guangdong University of Technology
+      place: Training Building II–202
+    - start: '2026-08-05'
+      track: Departure
+      title: Workshop concludes

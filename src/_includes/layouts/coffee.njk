@@ -1,0 +1,22 @@
+---
+layout: layouts/base.njk
+---
+{% include 'components/life-nav.njk' %}
+<section class="life-section">
+<header class="life-section-heading">
+<h1>{{ title }}</h1>
+<div class="prose">{{ content | safe }}</div>
+</header>
+<div class="coffee-gallery">
+{% for photo in coffee %}
+<figure class="coffee-photo coffee-photo-{{ photo.style }}">
+<div class="coffee-photo-frame">
+{% image photo.src, photo.alt %}
+</div>
+{% if photo.caption %}
+<figcaption>{{ photo.caption }}</figcaption>
+{% endif %}
+</figure>
+{% endfor %}
+</div>
+</section>

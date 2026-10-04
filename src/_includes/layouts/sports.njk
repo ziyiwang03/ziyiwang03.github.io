@@ -1,0 +1,66 @@
+---
+layout: layouts/base.njk
+---
+{% include 'components/life-nav.njk' %}
+<section class="life-section">
+<header class="life-section-heading">
+<h1>{{ title }}</h1>
+{% if content %}<div class="prose">{{ content | safe }}</div>{% endif %}
+</header>
+<div class="activity-list">
+<article class="activity-block running-block">
+<div class="activity-intro">
+<h2>Running</h2>
+<p>{{ sports.running.description }}</p>
+</div>
+<dl class="pb-list">
+{% for record in sports.running.personalBests %}
+<div{% if not record.time %} class="pb-open"{% endif %}>
+<dt>{{ record.distance }}</dt>
+<dd>{% if record.time %}{{ record.time }}{% else %}—{% if record.note %} <small>{{ record.note }}</small>{% endif %}{% endif %}</dd>
+</div>
+{% endfor %}
+</dl>
+{% set activity = sports.running %}
+{% include 'components/sport-photos.njk' %}
+</article>
+<article class="activity-block table-tennis-block">
+<div class="activity-intro">
+<h2>{{ sports.tableTennis.title }}</h2>
+<p>{{ sports.tableTennis.description }}</p>
+</div>
+<div class="racket-setups">
+{% for racket in sports.tableTennis.rackets %}
+<section class="racket-setup" aria-labelledby="racket-{{ loop.index }}-title">
+<h3 id="racket-{{ loop.index }}-title">{{ racket.name }}</h3>
+<dl class="equipment-list">
+<div><dt>Blade</dt><dd>{{ racket.blade or 'To be added' }}</dd></div>
+<div><dt>Forehand rubber</dt><dd>{{ racket.forehand or 'To be added' }}</dd></div>
+<div><dt>Backhand rubber</dt><dd>{{ racket.backhand or 'To be added' }}</dd></div>
+</dl>
+</section>
+{% endfor %}
+</div>
+{% set activity = sports.tableTennis %}
+{% include 'components/sport-photos.njk' %}
+</article>
+<article class="activity-block swimming-block">
+<div class="activity-intro">
+<h2>Swimming</h2>
+<p>{{ sports.swimming.description }}</p>
+</div>
+<div class="single-stat">
+<strong>{{ sports.swimming.personalBest }}</strong>
+<span>{{ sports.swimming.distance }} PB</span>
+</div>
+{% set activity = sports.swimming %}
+{% include 'components/sport-photos.njk' %}
+</article>
+<article class="activity-block football-block">
+<div class="activity-intro"><h2>Football</h2></div>
+<div class="activity-note">{{ sports.football.description | markdown | replace('rel="noopener noreferrer"', 'target="_blank" rel="noopener noreferrer"') | safe }}</div>
+{% set activity = sports.football %}
+{% include 'components/sport-photos.njk' %}
+</article>
+</div>
+</section>

@@ -1,0 +1,33 @@
+---
+layout: layouts/base.njk
+---
+{% include 'components/life-nav.njk' %}
+<section class="life-section">
+<header class="life-section-heading">
+<h1>{{ title }}</h1>
+</header>
+<div class="photography-intro">
+<div class="prose">{{ content | safe }}</div>
+{% if kit.length %}
+<dl class="photography-kit" aria-label="Current photography equipment">
+{% for item in kit %}<div><dt>{{ item.format }}</dt><dd>{{ item.camera }}</dd></div>{% endfor %}
+</dl>
+{% endif %}
+</div>
+<div class="photography-gallery" aria-label="Selected photography">
+{% for photo in photos %}
+{% if photo.group and (loop.first or photos[loop.index0 - 1].group != photo.group) %}
+<div class="photography-pair">
+{% endif %}
+<figure class="photograph photograph-{{ photo.shape }}">
+{% image photo.src, photo.alt %}
+{% if photo.caption %}
+<figcaption>{{ photo.caption }}</figcaption>
+{% endif %}
+</figure>
+{% if photo.group and (loop.last or photos[loop.index0 + 1].group != photo.group) %}
+</div>
+{% endif %}
+{% endfor %}
+</div>
+</section>

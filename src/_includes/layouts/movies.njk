@@ -1,0 +1,57 @@
+---
+layout: layouts/base.njk
+---
+{% include 'components/life-nav.njk' %}
+<section class="life-section">
+<header class="life-section-heading">
+<h1>{{ title }}</h1>
+<div class="prose">{{ content | safe }}</div>
+</header>
+<div class="movie-grid">
+{% for movie in movies %}
+<article class="movie-card">
+<span class="movie-rank">{{ loop.index | twoDigits }}</span>
+<div class="movie-poster">
+<a class="poster-shell" data-image-preview href="{{ movie.poster }}" data-image-src="{{ movie.poster }}" data-image-alt="{{ movie.alt }}" data-image-label="{{ movie.title }}" aria-label="View the original poster for {{ movie.title }}">
+{% image movie.poster, movie.alt, true, 'poster-image' %}
+</a>
+</div>
+<div class="movie-copy">
+<p class="movie-type">{{ movie.year }} · {{ movie.director }}</p>
+<h2>{{ movie.title }} <span class="movie-cn" lang="zh-CN">（{{ movie.chineseTitle }}）</span>
+</h2>
+{% if movie.review %}
+<div class="prose">{{ movie.review | markdown | safe }}</div>
+{% else %}
+<p>Personal note to be added.</p>
+{% endif %}
+{% for essay in collections.filmReviews %}
+{% if essay.data.movieKey == movie.key and not essay.data.draft %}
+<a class="text-link film-review-link" href="{{ essay.url }}">{{ essay.data.title }} →</a>
+{% endif %}
+{% endfor %}
+</div>
+</article>
+{% endfor %}
+</div>
+<section class="film-essay-index" aria-labelledby="film-essays-title">
+  <header class="studies-collection-heading">
+    <h2 id="film-essays-title">Film essays</h2>
+    <p>Longer reviews and reflections on cinema.</p>
+  </header>
+  {% if collections.filmReviews.length %}
+  <div class="archive-list">
+    {% for essay in collections.filmReviews %}
+    {% if not essay.data.draft %}
+    <article>
+      <h3><a href="{{ essay.url }}">{{ essay.data.title }}</a></h3>
+      {% if essay.data.description %}<p>{{ essay.data.description }}</p>{% endif %}
+    </article>
+    {% endif %}
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="empty-state">No long film essays have been published yet.</p>
+  {% endif %}
+</section>
+</section>

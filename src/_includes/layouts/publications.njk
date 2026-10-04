@@ -1,0 +1,49 @@
+---
+layout: layouts/base.njk
+---
+<header class="page-intro">
+<h1>{{ title }}</h1>
+</header>
+<section data-filter-group data-filter-key="publications" data-default-filter="all" aria-label="Publications">
+  <div class="publication-toolbar">
+<div class="publication-count">
+<span class="large-number">{{ publications.length | twoDigits }}</span>
+<span>research items</span>
+</div>
+<div class="publication-filters filter-controls" data-filter-controls role="group" aria-label="Filter publications">
+{% for key,label in {all:'All',preprint:'Preprints',journal:'Journal',conference:'Conference',thesis:'Thesis'} %}
+<button type="button" data-filter="{{ key }}" aria-pressed="{{ 'true' if key == 'all' else 'false' }}">{{ label }}</button>
+{% endfor %}
+</div>
+</div>
+  <div class="publication-list" aria-live="polite">
+{% for item in publications | newest('year') %}
+<article class="publication-item" data-filter-item data-category="{{ item.type }}">
+<div class="publication-year">{{ item.year }}</div>
+<div class="publication-body">
+<h2>{{ item.title }}</h2>
+<p class="authors">
+{% for author in item.authors %}
+{% if author == profile.name %}
+<strong>{{ author }}</strong>
+{% else %}{{ author }}{% endif %}
+{% if not loop.last %}, {% endif %}
+{% endfor %}
+</p>
+<p class="venue">{{ item.venue }}{% if item.status %} · {{ item.status }}{% endif %}
+</p>
+{% if item.links.length %}
+<div class="publication-links">
+{% for link in item.links %}
+<a href="{{ link.url }}" rel="noopener noreferrer">{{ link.label }}</a>
+{% endfor %}
+</div>
+{% endif %}
+</div>
+</article>
+{% endfor %}
+</div>
+  <div class="empty-state" data-filter-empty{% if publications.length %} hidden{% endif %}>
+    {% if publications.length %}No publications in this category.{% else %}{{ content | safe }}{% endif %}
+  </div>
+</section>

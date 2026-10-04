@@ -1,0 +1,49 @@
+---
+layout: layouts/base.njk
+---
+<header class="page-intro">
+  <h1>{{ title }}</h1>
+  <div class="prose">{{ content | safe }}</div>
+</header>
+<section data-filter-group data-filter-key="blog" data-default-filter="all" aria-label="Writing archive">
+  {% if collections.featuredPosts.length %}
+  <div class="blog-feature-grid" aria-label="Featured writing">
+    {% for post in collections.featuredPosts %}
+    <article class="blog-feature" data-filter-item data-category="{{ post.data | writingCategory }}">
+      <div class="blog-meta">
+        <span>{{ post.data | writingCategory | capitalize }}</span>
+        <time datetime="{{ post.data.date | isoDate }}">{{ post.data.date | displayDate('day') }}</time>
+      </div>
+      <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+      <p>{{ post.data.description }}</p>
+      {% if post.data.previewMath %}
+      <div class="mini-equation">{{ post.data.previewMath | markdown | safe }}</div>
+      {% endif %}
+      <a href="{{ post.url }}">Read article →</a>
+    </article>
+    {% endfor %}
+  </div>
+  {% endif %}
+  <div class="archive-heading"><h2>Archive</h2></div>
+  <div class="blog-filters filter-controls" data-filter-controls role="group" aria-label="Filter writing">
+    {% for key in ['all','mathematics','life','notes'] %}
+    <button type="button" data-filter="{{ key }}" aria-pressed="{{ 'true' if key == 'all' else 'false' }}">{{ key | capitalize }}</button>
+    {% endfor %}
+  </div>
+  <div class="archive-list" aria-live="polite">
+    {% for post in collections.writing %}
+    <article data-filter-item data-category="{{ post.data | writingCategory }}">
+      <time datetime="{{ post.data.date | isoDate }}">{{ post.data.date | displayDate('day') }}</time>
+      <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+      <p>{{ post.data.description }}</p>
+    </article>
+    {% endfor %}
+  </div>
+  <p class="empty-state" data-filter-empty{% if collections.writing.length %} hidden{% endif %}>
+    {% if collections.writing.length %}
+    No published posts in this category.
+    {% else %}
+    No articles have been published yet. You can browse my <a href="/studies/">course notes and workshop records</a>.
+    {% endif %}
+  </p>
+</section>

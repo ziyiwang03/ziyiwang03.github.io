@@ -1,0 +1,41 @@
+---
+layout: layouts/base.njk
+---
+<header class="page-intro">
+  <h1>{{ title }}</h1>
+</header>
+
+{% if collections.courses.length %}
+  <section class="teaching-term" aria-labelledby="teaching-courses-title">
+    <div class="term-heading">
+      <h2 id="teaching-courses-title">Courses</h2>
+      <span>Teaching appointments and course pages</span>
+    </div>
+    <div class="studies-list">
+      {% for course in collections.courses %}
+        <a class="course-row" href="{{ course.url }}">
+          <span class="course-code">{{ course.data.code or course.data.term }}</span>
+          <span>
+            <strong>{{ course.data.title }}</strong>
+            {% if course.data.term and course.data.code %}<small class="course-term">{{ course.data.term }}</small>{% endif %}
+            {% if course.data.role %}<small>{{ course.data.role }}</small>{% endif %}
+            {% if course.data.status %}<small class="course-status">{{ course.data.status }}</small>{% endif %}
+          </span>
+          <span class="course-action">Open course →</span>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+{% else %}
+  <p class="empty-state">{{ emptyMessage }}</p>
+{% endif %}
+
+<div class="teaching-philosophy prose">{{ content | safe }}</div>
+
+{% if courseTemplate.url %}
+  <section class="course-template-entry" aria-labelledby="course-template-title">
+    <h2 id="course-template-title">{{ courseTemplate.title }}</h2>
+    <p>{{ courseTemplate.description }}</p>
+    <a class="text-link" href="{{ courseTemplate.url }}">Open the course-room template →</a>
+  </section>
+{% endif %}

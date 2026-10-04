@@ -1,0 +1,13 @@
+{% if activity.photos.length %}
+<div class="sport-photos">
+{% for photo in activity.photos %}
+<figure>{% image photo.src, photo.alt %}{% if photo.caption %}<figcaption>{{ photo.caption }}</figcaption>{% endif %}</figure>
+{% endfor %}
+</div>
+{% elif activity.photoSlots.length %}
+<div class="sports-photo-reserve" aria-label="Future {{ activity.title or 'sports' }} photos">
+{% for slot in activity.photoSlots %}
+<div><span>{{ slot.label }}</span><small>Future image</small></div>
+{% endfor %}
+</div>
+{% endif %}
