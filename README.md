@@ -15,3 +15,6 @@ The site is a dependency-free static website with:
 Serve this directory with any static web server, then open `index.html` through
 the local server.
 
+
+
+This is the initial version of my homepage.
